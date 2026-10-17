@@ -75,7 +75,7 @@ export function Composer({
           e.preventDefault();
           submit(value);
         }}
-        className="rounded-2xl border bg-card shadow-2xl transition-all focus-within:border-ring/60 focus-within:ring-1 focus-within:ring-ring/30"
+        className="rounded-2xl border border-zinc-200 bg-white/90 shadow-sm backdrop-blur-md transition-all focus-within:border-ring/60 focus-within:ring-1 focus-within:ring-ring/30 dark:border-zinc-800 dark:bg-zinc-900/90 dark:shadow-none"
       >
         {files.length > 0 ? (
           <div className="flex flex-wrap gap-1.5 px-3 pt-3">

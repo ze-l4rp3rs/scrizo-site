@@ -52,11 +52,11 @@ export function ChatSidebar({
   onDelete,
 }: ChatSidebarProps) {
   return (
-    <div className="flex h-full flex-col bg-foreground/[0.02]">
+    <div className="flex h-full flex-col bg-zinc-200/50 dark:bg-zinc-950">
       {/* Workspace */}
       <button
         type="button"
-        className="flex w-full items-center justify-between gap-2 border-b border-border/60 px-3.5 py-3 text-left transition-colors hover:bg-foreground/[0.03]"
+        className="flex w-full items-center justify-between gap-2 border-b border-border/60 px-3.5 py-3 text-left transition-colors hover:bg-zinc-200/70 dark:hover:bg-zinc-800/40"
       >
         <div className="flex min-w-0 items-center gap-2.5">
           <div className="size-7 shrink-0 rounded-md bg-primary/70 ring-1 ring-border/60" />
@@ -85,7 +85,7 @@ export function ChatSidebar({
           <span className="flex-1 truncate text-xs text-muted-foreground">
             Quick find…
           </span>
-          <kbd className="rounded border border-border/60 bg-background/80 px-1 font-mono text-[9px] text-muted-foreground">
+          <kbd className="rounded border border-zinc-300/60 bg-zinc-200/60 px-1 font-mono text-[9px] text-zinc-700 dark:border-zinc-700/60 dark:bg-zinc-800/60 dark:text-zinc-300">
             ⌘K
           </kbd>
         </div>
@@ -103,8 +103,8 @@ export function ChatSidebar({
                   className={cn(
                     "group flex w-full items-center justify-between gap-2 rounded-md px-2 py-1.5 text-sm transition-colors",
                     active
-                      ? "bg-foreground/[0.06] text-foreground"
-                      : "text-muted-foreground hover:bg-foreground/[0.03] hover:text-foreground",
+                      ? "bg-indigo-50/80 text-indigo-600 shadow-sm outline outline-indigo-200/70 font-medium dark:bg-zinc-800/70 dark:text-zinc-100 dark:outline-zinc-700/50"
+                      : "text-muted-foreground hover:bg-zinc-200/70 dark:hover:bg-zinc-800/40 hover:text-foreground",
                   )}
                 >
                   <button
@@ -139,7 +139,7 @@ export function ChatSidebar({
             <li key={a.label}>
               <button
                 type="button"
-                className="flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-foreground/[0.03] hover:text-foreground"
+                className="flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-zinc-200/70 dark:hover:bg-zinc-800/40 hover:text-foreground"
               >
                 <a.icon className="size-4 opacity-70" />
                 {a.label}
@@ -164,7 +164,7 @@ export function ChatSidebar({
         <button
           type="button"
           aria-label="Settings"
-          className="rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-foreground/[0.04] hover:text-foreground"
+          className="rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-zinc-200/70 dark:hover:bg-zinc-800/40 hover:text-foreground"
         >
           <SettingsIcon className="size-4" />
         </button>

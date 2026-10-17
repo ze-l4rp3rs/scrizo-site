@@ -383,7 +383,7 @@ export function ChatShell({
           </p>
         ) : null}
 
-        <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden rounded-xl border bg-card">
+        <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden rounded-2xl border border-zinc-200/90 bg-white shadow-[0_4px_20px_-2px_rgba(0,0,0,0.05),0_2px_6px_-1px_rgba(0,0,0,0.03)] dark:border-zinc-800 dark:bg-zinc-900">
           <MessageScrollerProvider>
             <MessageScroller className="min-h-0 flex-1">
               <MessageScrollerViewport className="p-4">
@@ -437,7 +437,7 @@ export function ChatShell({
         className={cn(
           "hidden shrink-0 flex-col overflow-hidden transition-all duration-300 ease-in-out md:flex",
           drawerOpen
-            ? "w-96 border-l border-border/60 bg-card opacity-100 lg:w-[420px]"
+            ? "w-96 border-l border-zinc-200/80 bg-white opacity-100 shadow-[0_4px_20px_-2px_rgba(0,0,0,0.05)] lg:w-[420px] dark:border-zinc-800/60 dark:bg-zinc-900"
             : "w-0 border-l-0 opacity-0",
         )}
       >
@@ -461,7 +461,7 @@ export function ChatShell({
       <aside
         aria-hidden={!drawerOpen}
         className={cn(
-          "fixed inset-y-0 right-0 z-50 flex w-full max-w-sm flex-col border-l border-border/60 bg-background shadow-2xl transition-all duration-300 ease-in-out md:hidden",
+          "fixed inset-y-0 right-0 z-50 flex w-full max-w-sm flex-col border-l border-zinc-200/80 bg-white shadow-2xl transition-all duration-300 ease-in-out dark:border-zinc-800/60 dark:bg-zinc-900 md:hidden",
           drawerOpen ? "translate-x-0" : "translate-x-full",
         )}
       >

@@ -247,7 +247,7 @@ export function WorkspaceRail({
       {/* Desktop: expanded sidebar or collapsed icon-only rail */}
       <aside
         className={cn(
-          "hidden h-svh shrink-0 flex-col overflow-hidden border-r border-border/60 bg-foreground/[0.02] transition-all duration-300 ease-in-out md:flex",
+          "hidden h-svh shrink-0 flex-col overflow-hidden border-r border-zinc-200/80 bg-zinc-100/80 transition-all duration-300 ease-in-out dark:border-zinc-800/60 dark:bg-zinc-950 md:flex",
           collapsed ? "w-16" : "w-64",
           className,
         )}
@@ -387,7 +387,7 @@ function RailContent({
             type="button"
             title="Acme inc."
             className={cn(
-              "flex min-w-0 items-center gap-2.5 rounded-md text-left transition-colors hover:bg-foreground/[0.03]",
+              "flex min-w-0 items-center gap-2.5 rounded-md text-left transition-colors hover:bg-zinc-200/70 dark:hover:bg-zinc-800/40",
               collapsed ? "justify-center p-1" : "min-w-0 flex-1 px-1 py-0.5",
             )}
           >
@@ -412,7 +412,7 @@ function RailContent({
             onClick={onCloseMobile}
             aria-label="Close sidebar"
             title="Close sidebar"
-            className="shrink-0 rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-foreground/[0.04] hover:text-foreground"
+            className="shrink-0 rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-zinc-200/70 dark:hover:bg-zinc-800/40 hover:text-foreground"
           >
             <XIcon className="size-4" />
           </button>
@@ -422,7 +422,7 @@ function RailContent({
             onClick={onToggle}
             aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
             title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-            className="shrink-0 rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-foreground/[0.04] hover:text-foreground"
+            className="shrink-0 rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-zinc-200/70 dark:hover:bg-zinc-800/40 hover:text-foreground"
           >
             {collapsed ? (
               <PanelLeftOpenIcon className="size-4" />
@@ -440,7 +440,7 @@ function RailContent({
               type="button"
               aria-label="Quick find"
               title="Quick find"
-              className="flex w-full items-center justify-center rounded-md border border-border/60 bg-background/60 px-2.5 py-1.5 transition-colors hover:bg-foreground/[0.03]"
+              className="flex w-full items-center justify-center rounded-md border border-border/60 bg-background/60 px-2.5 py-1.5 transition-colors hover:bg-zinc-200/70 dark:hover:bg-zinc-800/40"
             >
               <SearchIcon className="size-3.5 opacity-50" />
             </button>
@@ -451,7 +451,7 @@ function RailContent({
             <span className="flex-1 truncate text-muted-foreground text-xs">
               Quick find…
             </span>
-            <kbd className="rounded border border-border/60 bg-background/80 px-1 font-mono text-[9px] text-muted-foreground">
+            <kbd className="rounded border border-zinc-300/60 bg-zinc-200/60 px-1 font-mono text-[9px] text-zinc-700 dark:border-zinc-700/60 dark:bg-zinc-800/60 dark:text-zinc-300">
               ⌘K
             </kbd>
           </div>
@@ -485,8 +485,8 @@ function RailContent({
                       "flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-sm transition-colors",
                       collapsed ? "justify-center" : "justify-between",
                       active
-                        ? "bg-foreground/[0.06] text-foreground"
-                        : "text-muted-foreground hover:bg-foreground/[0.03] hover:text-foreground",
+                        ? "bg-indigo-50/80 text-indigo-600 shadow-sm outline outline-indigo-200/70 font-medium dark:bg-zinc-800/70 dark:text-zinc-100 dark:outline-zinc-700/50"
+                        : "text-muted-foreground hover:bg-zinc-200/70 dark:hover:bg-zinc-800/40 hover:text-foreground",
                     )}
                   >
                     {collapsed ? (
@@ -547,8 +547,8 @@ function RailContent({
                         "group/session-row flex w-full items-center rounded-lg text-sm transition-colors",
                         collapsed ? "justify-center" : "pr-1",
                         selected
-                          ? "bg-foreground/[0.06] text-foreground"
-                          : "text-muted-foreground hover:bg-foreground/[0.03] hover:text-foreground",
+                          ? "bg-indigo-50/80 text-indigo-600 shadow-sm outline outline-indigo-200/70 font-medium dark:bg-zinc-800/70 dark:text-zinc-100 dark:outline-zinc-700/50"
+                          : "text-muted-foreground hover:bg-zinc-200/70 dark:hover:bg-zinc-800/40 hover:text-foreground",
                       )}
                     >
                       <button
@@ -612,7 +612,7 @@ function RailContent({
                   title={`${item.label} — ${item.hint}`}
                   onClick={() => onOpenUtility(item.id)}
                   className={cn(
-                    "flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-muted-foreground text-sm transition-colors hover:bg-foreground/[0.03] hover:text-foreground",
+                    "flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-muted-foreground text-sm transition-colors hover:bg-zinc-200/70 dark:hover:bg-zinc-800/40 hover:text-foreground",
                     collapsed && "justify-center",
                   )}
                 >
@@ -658,7 +658,7 @@ function RailContent({
             title="Settings"
             aria-label="Settings"
             onClick={() => onOpenUtility("appearance")}
-            className="rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-foreground/[0.04] hover:text-foreground"
+            className="rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-zinc-200/70 dark:hover:bg-zinc-800/40 hover:text-foreground"
           >
             <SettingsIcon className="size-4" />
           </button>
@@ -797,8 +797,8 @@ function AppearanceDialog({
                 className={cn(
                   "flex w-full items-center gap-2.5 rounded-md px-2.5 py-2 text-left text-sm transition-colors",
                   selected
-                    ? "bg-foreground/[0.06] text-foreground"
-                    : "text-muted-foreground hover:bg-foreground/[0.03] hover:text-foreground",
+                    ? "bg-indigo-50/80 text-indigo-600 shadow-sm outline outline-indigo-200/70 font-medium dark:bg-zinc-800/70 dark:text-zinc-100 dark:outline-zinc-700/50"
+                    : "text-muted-foreground hover:bg-zinc-200/70 dark:hover:bg-zinc-800/40 hover:text-foreground",
                 )}
               >
                 <o.icon className="size-4 shrink-0 opacity-70" />
