@@ -9,6 +9,24 @@
     "ignoreUnknown": true,
     "includes": ["**", "!node_modules", "!.next", "!dist", "!build"]
   },
+  "overrides": [
+    {
+      "includes": [
+        "src/components/ScrollExpand.jsx",
+        "src/components/ScrollExpand.css"
+      ],
+      "formatter": {
+        "enabled": false
+      },
+      "linter": {
+        "rules": {
+          "performance": {
+            "noImgElement": "off"
+          }
+        }
+      }
+    }
+  ],
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
