@@ -134,8 +134,8 @@ export function HeroSection() {
         scrollHint="Scroll to explore"
         titleFadeStart={0.32}
         titleFadeEnd={0.8}
-        startWidth={5}
-        startHeight={5}
+        startWidth={0}
+        startHeight={0}
         scrollDistance={SCROLL_DISTANCE}
         useWindowScroll
       />
