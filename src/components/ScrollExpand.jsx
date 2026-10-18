@@ -27,6 +27,8 @@ const ScrollExpand = ({
   holdDistance = 0.35,
   smoothing = 0.1,
   overlayScrim = 0.45,
+  titleFadeStart = 0.4,
+  titleFadeEnd = 0.88,
   useWindowScroll = false,
   enabled = true,
   children,
@@ -55,6 +57,8 @@ const ScrollExpand = ({
     holdDistance,
     smoothing,
     overlayScrim,
+    titleFadeStart,
+    titleFadeEnd,
     useWindowScroll,
     enabled
   };
@@ -79,7 +83,7 @@ const ScrollExpand = ({
     if (scrimRef.current) scrimRef.current.style.opacity = `${c.overlayScrim * e}`;
 
     if (titleRef.current) {
-      const out = smoothstep(0.4, 0.88, p);
+      const out = smoothstep(propsRef.current.titleFadeStart, propsRef.current.titleFadeEnd, p);
       titleRef.current.style.opacity = `${1 - out}`;
       titleRef.current.style.transform = `translate3d(0, ${-28 * out}px, 0) scale(${1 + 0.06 * out})`;
     }

@@ -5,7 +5,7 @@ export interface ScrollExpandProps {
   mediaType?: "image" | "video";
   poster?: string;
   alt?: string;
-  title?: string;
+  title?: ReactNode;
   scrollHint?: string;
   startWidth?: number;
   startHeight?: number;
@@ -16,6 +16,10 @@ export interface ScrollExpandProps {
   holdDistance?: number;
   smoothing?: number;
   overlayScrim?: number;
+  /** Progress at which the title starts fading out (0 = start, 1 = fully expanded). */
+  titleFadeStart?: number;
+  /** Progress at which the title finishes fading out. */
+  titleFadeEnd?: number;
   useWindowScroll?: boolean;
   enabled?: boolean;
   children?: ReactNode;

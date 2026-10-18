@@ -2,7 +2,8 @@
 
 import { LayoutGrid } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
+import { heroExpandedStore } from "./hero-expanded-store";
 
 const NAV_ITEMS = [
   { label: "FEATURES", href: "#features", id: "features" },
@@ -13,6 +14,11 @@ const NAV_ITEMS = [
 
 export function Header() {
   const [active, setActive] = useState<string | null>(null);
+  const expanded = useSyncExternalStore(
+    heroExpandedStore.subscribe,
+    heroExpandedStore.getSnapshot,
+    () => false,
+  );
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -34,7 +40,13 @@ export function Header() {
   }, []);
 
   return (
-    <header className="fixed top-0 z-50 flex w-full items-center justify-between bg-transparent px-8 py-6">
+    <header
+      className={`fixed top-0 z-50 flex w-full items-center justify-between bg-transparent px-8 py-6 transition-[opacity,transform] duration-500 ease-out ${
+        expanded
+          ? "translate-y-0 opacity-100"
+          : "pointer-events-none -translate-y-full opacity-0"
+      }`}
+    >
       {/* Brand */}
       <div className="pr-8">
         <Link

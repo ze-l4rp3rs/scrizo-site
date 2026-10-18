@@ -25,9 +25,9 @@ import {
   XIcon,
   ZapIcon,
 } from "lucide-react";
-import { useTheme } from "next-themes";
 import type { ReactElement, ReactNode } from "react";
 import { useEffect, useState } from "react";
+import { useTheme } from "@/components/theme-provider";
 import { Badge } from "@/components/ui/badge";
 import {
   Dialog,
