@@ -9,7 +9,9 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import Image from "next/image";
-import HalftoneReveal from "@/components/HalftoneReveal";
+
+// TEMP: commented out while the girl-with-mask layer is disabled — uncomment together with the JSX block below.
+// import HalftoneReveal from "@/components/HalftoneReveal";
 
 type FeatureCard = {
   step: string;
@@ -68,7 +70,7 @@ function FeatureGlassCard({
       viewport={{ once: true, amount: 0.4 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className="group relative overflow-hidden rounded-3xl bg-white/[0.03] border border-white/[0.08] hover:border-white/[0.18] backdrop-blur-2xl p-5 lg:p-6 flex flex-col justify-between transition-all duration-300 hover:bg-white/[0.05] min-h-[190px]"
+      className="group relative overflow-hidden rounded-3xl bg-transparent border border-white/[0.05] hover:border-white/[0.12] backdrop-blur-[6px] p-5 lg:p-6 flex flex-col justify-between transition-all duration-300 hover:bg-white/[0.03] min-h-[190px]"
     >
       {/* soft top-left glass sheen */}
       <div
@@ -79,7 +81,7 @@ function FeatureGlassCard({
       {/* subtle bottom vignette for text legibility */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/30 to-transparent"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/10 to-transparent"
       />
 
       {/* top: whisper icon + step */}
@@ -116,7 +118,7 @@ function FeatureGlassCard({
 
 export function FeatureBento() {
   return (
-    <section className="relative w-full min-h-screen py-0 px-6 lg:px-8 bg-zinc-950 text-white font-sans flex items-stretch overflow-hidden">
+    <section className="relative w-full min-h-screen py-0 px-6 lg:px-8 bg-zinc-950 text-white font-sans flex items-center justify-center overflow-hidden">
       {/* moody feature background — dark monochrome flower field */}
       <Image
         src="/feature background.jpg"
@@ -131,74 +133,37 @@ export function FeatureBento() {
         aria-hidden="true"
         className="absolute inset-0 z-0 bg-gradient-to-b from-zinc-950/85 via-zinc-950/40 to-zinc-950/75"
       />
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-20 w-full max-w-[1400px] mx-auto items-stretch">
-        {/* Left — dominant artwork column, full-bleed to section edges */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="lg:col-span-7 relative min-h-[560px] flex items-center justify-center"
-        >
-          {/* artwork as seamless halftone background layer of the column */}
-          <div className="absolute inset-0 z-0">
-            <HalftoneReveal
-              src="/girl with mask.png"
-              fit="contain"
-              mode="mono"
-              shape="dot"
-              cellSize={7}
-              angle={45}
-              dotScale={1}
-              inkColor="#ffffff"
-              paperColor="#09090b"
-              accentColor="#a1a1aa"
-              contrast={1.15}
-              brightness={0}
-              roughness={0.15}
-              revealRadius={170}
-              softness={0.6}
-              linger={1.2}
-              clickBurst
-              intro
-              className="w-full h-full object-contain object-center scale-100"
-            />
-          </div>
 
-          {/* heading pinned to the very top of the section */}
-          <div className="absolute top-6 lg:top-8 left-0 z-20">
-            <h2 className="font-mono font-bold uppercase text-white text-4xl lg:text-6xl tracking-[0.12em] drop-shadow-[0_8px_32px_rgba(0,0,0,0.9)]">
-              [ BRAIN
-              <span className="align-super text-lg lg:text-2xl">®</span> ]
-            </h2>
-          </div>
+      {/* centered bento grid */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6 }}
+        className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-[840px]"
+      >
+        {CARDS.map((card, index) => (
+          <FeatureGlassCard key={card.step} card={card} index={index} />
+        ))}
+      </motion.div>
 
-          {/* narrative pinned to the very bottom of the section */}
-          <div className="absolute bottom-6 lg:bottom-8 left-0 z-20 max-w-[300px]">
-            <p className="font-sans text-[11px] uppercase tracking-[0.2em] text-zinc-300 leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
-              An enterprise knowledge engine. Every answer audited, cited, and
-              time-aware — proof you can click, never a guess.
-            </p>
-            <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-zinc-500 mt-3 inline-block drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
-              ©2026 — VERIFIED PROOF ENGINE
-            </span>
-          </div>
-        </motion.div>
+      {/* heading pinned to the very top-left of the section */}
+      <div className="absolute top-6 lg:top-8 left-6 lg:left-8 z-20 pointer-events-none">
+        <h2 className="font-mono font-bold uppercase text-white text-4xl lg:text-6xl tracking-[0.12em] drop-shadow-[0_8px_32px_rgba(0,0,0,0.9)]">
+          [ BRAIN
+          <span className="align-super text-lg lg:text-2xl">®</span> ]
+        </h2>
+      </div>
 
-        {/* Right — tactile glassmorphic feature tiles */}
-        <div className="lg:col-span-5 w-full flex items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full"
-          >
-            {CARDS.map((card, index) => (
-              <FeatureGlassCard key={card.step} card={card} index={index} />
-            ))}
-          </motion.div>
-        </div>
+      {/* narrative pinned to the very bottom-left of the section */}
+      <div className="absolute bottom-6 lg:bottom-8 left-6 lg:left-8 z-20 max-w-[300px] pointer-events-none">
+        <p className="font-sans text-[11px] uppercase tracking-[0.2em] text-zinc-300 leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+          An enterprise knowledge engine. Every answer audited, cited, and
+          time-aware — proof you can click, never a guess.
+        </p>
+        <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-zinc-500 mt-3 inline-block drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+          ©2026 — VERIFIED PROOF ENGINE
+        </span>
       </div>
     </section>
   );
